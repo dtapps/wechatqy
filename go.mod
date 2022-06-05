@@ -17,9 +17,9 @@ require (
 	github.com/saracen/go7z v0.0.0-20191010121135-9c09b6bd7fda // indirect
 	github.com/saracen/solidblock v0.0.0-20190426153529-45df20abab6f // indirect
 	github.com/ulikunitz/xz v0.5.10 // indirect
-	go.dtapp.net/goip v1.0.16 // indirect
+	go.dtapp.net/goip v1.0.17 // indirect
 	go.dtapp.net/gostring v1.0.3 // indirect
 	go.dtapp.net/gotime v1.0.2 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	gorm.io/driver/mysql v1.3.3 // indirect
+	gorm.io/driver/mysql v1.3.4 // indirect
 )

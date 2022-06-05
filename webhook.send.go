@@ -25,7 +25,8 @@ func NewWebhookSendResult(result WebhookSendResponse, body []byte, http goreques
 	return &WebhookSendResult{Result: result, Body: body, Http: http, Err: err}
 }
 
-// WebhookSend https://developer.work.weixin.qq.com/document/path/90372
+// WebhookSend 发送应用消息
+// https://developer.work.weixin.qq.com/document/path/90372
 func (app *App) WebhookSend(notMustParams ...Params) *WebhookSendResult {
 	// 参数
 	params := app.NewParamsWith(notMustParams...)
