@@ -7,3 +7,5 @@ const (
 const (
 	logTable = "wechatqy"
 )
+
+const Version = "1.0.4"
