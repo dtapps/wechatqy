@@ -1,11 +1,7 @@
 package wechatqy
 
 const (
-	apiUrl = "https://qyapi.weixin.qq.com"
-)
-
-const (
+	apiUrl   = "https://qyapi.weixin.qq.com"
 	logTable = "wechatqy"
+	Version  = "1.0.10"
 )
-
-const Version = "1.0.9"
