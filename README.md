@@ -1,8 +1,8 @@
 <h1>
-<a href="https://www.dtapp.net/">Golang Wechat Qy</a>
+<a href="https://www.dtapp.net/">Golang</a>
 </h1>
 
-📦 Golang Wechat Qy
+📦 Golang Wechat 企业微信机器人
 
 [comment]: <> (go)
 [![godoc](https://pkg.go.dev/badge/go.dtapp.net/wechatqy?status.svg)](https://pkg.go.dev/go.dtapp.net/wechatqy)
@@ -13,5 +13,5 @@
 #### 安装
 
 ```shell
-go get -v -u go.dtapp.net/wechatqy@v1.0.16
+go get -v -u go.dtapp.net/wechatqy@v1.0.17
 ```
