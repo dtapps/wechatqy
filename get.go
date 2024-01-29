@@ -1,9 +1,5 @@
 package wechatqy
 
-func (c *Client) GetKey() string {
-	return c.config.key
-}
-
 func (c *Client) GetAppId() string {
 	return c.config.appId
 }

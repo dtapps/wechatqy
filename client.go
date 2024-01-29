@@ -10,7 +10,6 @@ type ClientConfig struct {
 	AgentId     int
 	Secret      string
 	RedirectUri string
-	Key         string // key
 }
 
 // Client 实例
@@ -20,7 +19,6 @@ type Client struct {
 		agentId     int
 		secret      string
 		redirectUri string
-		key         string
 	}
 	gormLog struct {
 		status bool           // 状态
@@ -34,14 +32,10 @@ type Client struct {
 
 // NewClient 创建实例化
 func NewClient(config *ClientConfig) (*Client, error) {
-
 	c := &Client{}
-
 	c.config.appId = config.AppId
 	c.config.agentId = config.AgentId
 	c.config.secret = config.Secret
 	c.config.redirectUri = config.RedirectUri
-	c.config.key = config.Key
-
 	return c, nil
 }

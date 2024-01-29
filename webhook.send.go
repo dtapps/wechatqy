@@ -26,13 +26,29 @@ func newWebhookSendResult(result WebhookSendResponse, body []byte, http goreques
 	return &WebhookSendResult{Result: result, Body: body, Http: http}
 }
 
-// WebhookSend 发送应用消息
+// WebhookSend 发送消息
 // https://developer.work.weixin.qq.com/document/path/90372
-func (c *Client) WebhookSend(ctx context.Context, notMustParams ...gorequest.Params) (*WebhookSendResult, error) {
+func (c *Client) WebhookSend(ctx context.Context, key string, Type string, notMustParams ...gorequest.Params) (*WebhookSendResult, error) {
 	// 参数
 	params := gorequest.NewParamsWith(notMustParams...)
 	// 请求
-	request, err := c.request(ctx, apiUrl+fmt.Sprintf("/cgi-bin/webhook/send?key=%s&type=%s", c.GetKey(), "text"), params, http.MethodPost)
+	request, err := c.request(ctx, apiUrl+fmt.Sprintf("/cgi-bin/webhook/send?key=%s&type=%s", key, Type), params, http.MethodPost)
+	if err != nil {
+		return newWebhookSendResult(WebhookSendResponse{}, request.ResponseBody, request), err
+	}
+	// 定义
+	var response WebhookSendResponse
+	err = gojson.Unmarshal(request.ResponseBody, &response)
+	return newWebhookSendResult(response, request.ResponseBody, request), err
+}
+
+// WebhookSendText 发送消息文本版
+// https://developer.work.weixin.qq.com/document/path/90372
+func (c *Client) WebhookSendText(ctx context.Context, key string, notMustParams ...gorequest.Params) (*WebhookSendResult, error) {
+	// 参数
+	params := gorequest.NewParamsWith(notMustParams...)
+	// 请求
+	request, err := c.request(ctx, apiUrl+fmt.Sprintf("/cgi-bin/webhook/send?key=%s&type=%s", key, "text"), params, http.MethodPost)
 	if err != nil {
 		return newWebhookSendResult(WebhookSendResponse{}, request.ResponseBody, request), err
 	}
