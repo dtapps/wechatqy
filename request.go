@@ -23,6 +23,7 @@ func (c *Client) request(ctx context.Context, url string, param gorequest.Params
 
 	// OpenTelemetry链路追踪
 	c.TraceSetAttributes(attribute.String("http.url", apiUrl+url))
+	c.TraceSetAttributes(attribute.String("http.method", method))
 	c.TraceSetAttributes(attribute.String("http.params", gojson.JsonEncodeNoError(param)))
 
 	// 发起请求
