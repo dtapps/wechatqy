@@ -30,6 +30,7 @@ type Client struct {
 // NewClient 创建实例化
 func NewClient(config *ClientConfig) (*Client, error) {
 	c := &Client{}
+
 	c.httpClient = gorequest.NewHttp()
 
 	c.config.appId = config.AppId
