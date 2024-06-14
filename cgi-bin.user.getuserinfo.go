@@ -3,9 +3,7 @@ package wechatqy
 import (
 	"context"
 	"fmt"
-	"go.dtapp.net/gojson"
 	"go.dtapp.net/gorequest"
-	"go.opentelemetry.io/otel/codes"
 	"net/http"
 )
 
@@ -40,19 +38,7 @@ func (c *Client) CgiBinUserGetUserInfo(ctx context.Context, accessToken, code st
 	params := gorequest.NewParamsWith(notMustParams...)
 
 	// 请求
-	request, err := c.request(ctx, fmt.Sprintf("cgi-bin/user/getuserinfo?access_token=%s&code=%s", accessToken, code), params, http.MethodGet)
-	if err != nil {
-		c.TraceRecordError(err)
-		c.TraceSetStatus(codes.Error, err.Error())
-		return newCgiBinUserGetUserInfoResult(CgiBinUserGetUserInfoResponse{}, request.ResponseBody, request), err
-	}
-
-	// 定义
 	var response CgiBinUserGetUserInfoResponse
-	err = gojson.Unmarshal(request.ResponseBody, &response)
-	if err != nil {
-		c.TraceRecordError(err)
-		c.TraceSetStatus(codes.Error, err.Error())
-	}
+	request, err := c.request(ctx, fmt.Sprintf("cgi-bin/user/getuserinfo?access_token=%s&code=%s", accessToken, code), params, http.MethodGet, &response)
 	return newCgiBinUserGetUserInfoResult(response, request.ResponseBody, request), err
 }
